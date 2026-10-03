@@ -3,6 +3,7 @@ INTENTS={
         "hello",
         "hi",
         "hey",
+        "hii",
         "good morning",
         "good evening"  
     ],
@@ -28,7 +29,7 @@ INTENTS={
         "thank you",
         "thanks a lot" 
     ],
-    "googbye":[
+    "goodbye":[
         "bye",
         "goodbye",
         "see you",
@@ -48,6 +49,49 @@ INTENTS={
         "what is today's date",
         "what date is it",
         "today's date"
-    ]
+    ],
+    "purpose":[
+        "what is your purpose",
+        "what is your job",
+        "why were you created",
+        "what are you for"
+    ],
+
+    "creator": [
+        "who created you",
+        "who made you",
+        "who developed you",
+        "who built you"
+    ],
+
+    "age": [
+        "how old are you",
+        "what is your age"
+    ],
+
+    "language": [
+        "what languages do you understand",
+        "which languages do you speak",
+        "what language do you understand"
+    ],
+
+    "ai": [
+        "what is ai",
+        "what is artificial intelligence",
+        "explain artificial intelligence"
+    ],
+
+    "python": [
+        "what is python",
+        "what is python programming",
+        "tell me about python"
+    ],
+
+    "nlp": [
+        "what is nlp",
+        "what is natural language processing",
+        "explain nlp"
+    ],
+   
 
 }

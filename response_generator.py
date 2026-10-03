@@ -41,7 +41,42 @@ class ResponseGenerator:
                 "I'm not sure I understand that yet.",
                 "Sorry,I don't know how to respond to that.",
                 "I haven't learned how to handle that question yet."
-            ]
+            ],
+            "purpose": [
+                "My purpose is to assist users with questions and simple conversations.",
+                "I'm designed to help users by answering questions and having simple conversations."
+            ],
+
+            "creator": [
+                "I was created as an AI chatbot project using Python, NLP techniques, and Gemini AI.",
+                "I was developed as part of an AI chatbot application project."
+            ],
+
+            "age": [
+                "I don't have an age like a human. I'm an AI assistant.",
+                "I'm an AI, so I don't have a human age."
+            ],
+
+            "language": [
+                "I primarily understand and respond in English.",
+                "I currently work mainly with English conversations."
+            ],
+
+            "ai": [
+                "AI stands for Artificial Intelligence. It enables computers to perform tasks that normally require human intelligence.",
+                "Artificial Intelligence is technology that allows computers to learn, reason, understand information, and generate responses."
+            ],
+
+            "python": [
+                "Python is a high-level, general-purpose programming language known for its simple and readable syntax.",
+                "Python is widely used for web development, automation, data science, machine learning, and AI."
+            ],
+
+            "nlp": [
+                "NLP stands for Natural Language Processing. It helps computers understand and process human language.",
+                "Natural Language Processing is a branch of AI that allows computers to work with human language."
+            ],
+            
 
         }
 
@@ -51,20 +86,3 @@ class ResponseGenerator:
             self.response["unknown"]
         )
         return random.choice(responses)
-if __name__ == "__main__":
-
-    generator = ResponseGenerator()
-
-    test_intents = [
-        "greeting",
-        "name",
-        "capabilities",
-        "thanks",
-        "goodbye",
-        "unknown"
-    ]
-
-    for intent in test_intents:
-        response = generator.generate_response(intent)
-
-        print(f"{intent}: {response}")

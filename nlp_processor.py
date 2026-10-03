@@ -14,43 +14,54 @@ class NLPProcessor:
     def detect_intent(self,tokens):
         from intents import INTENTS
 
+        user_text = " ".join(tokens)
+
+        best_intent = "unknown"
+        best_score = 0
+
+        stop_words ={
+            "what", "is", "are", "your", "you",
+            "tell", "me", "about", "the",
+            "can", "do", "i", "a", "an",
+            "how", "who", "which", "please",
+            "explain"
+        }
+       
         for intent,examples in INTENTS.items():
             for example in examples:
-                example_tokens = self.tokenize(self.normalize(example))
+                normalized_example = self.normalize(example)
+                example_tokens = self.tokenize(normalized_example)
 
-                if all(word in tokens for word in example_tokens):
+                # 1.Exact phrase matching
+                if normalized_example == user_text:
                     return intent
+
+                # 2.keyword matching
+                example_keywords =[
+                    word for word in example_tokens
+                    if word not in stop_words
+                ]
+
+                user_keywords =[
+                    word for word in tokens
+                    if word not in stop_words
+                ]
+                if not example_keywords:
+                    continue
+               
+                matches = sum(
+                    1 for word in example_keywords
+                    if word in user_keywords
+                )
+                score = matches / len(example_keywords)
+
+                if score > best_score:
+                    best_score = score
+                    best_intent = intent
+       
+        if best_score>0.5:
+            return best_intent
+
         return "unknown"
 
 
-if __name__ == "__main__":
-
-    processor = NLPProcessor()
-
-    text = "  HELLO!!!   How are YOU?  "
-
-    normalized_text = processor.normalize(text)
-    tokens = processor.tokenize(normalized_text)
-
-    print("Original:", text)
-    print("Normalized:", normalized_text)
-    print("Tokens:", tokens)
-    test_messages = [
-        "HELLO!!!",
-        "What's your name?",
-        "What can you do?",
-        "Thank you",
-        "Bye",
-        "Explain quantum physics"
-    ]
-
-    for message in test_messages:
-
-        normalized = processor.normalize(message)
-        tokens = processor.tokenize(normalized)
-        intent = processor.detect_intent(tokens)
-
-        print("\nMessage:", message)
-        print("Normalized:", normalized)
-        print("Tokens:", tokens)
-        print("Intent:", intent)
