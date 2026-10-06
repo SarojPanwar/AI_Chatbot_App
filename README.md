@@ -50,3 +50,12 @@ Response    Response
 - ai_response_generator.py – Uses the Gemini API to generate responses for unknown queries.
 - requirements.txt – Contains the Python packages required to run the project.
 - .env – Stores the Gemini API key securely.
+
+## How to Run
+
+Make sure Python is installed on your system.
+Run the following command from the project directory:
+Install the required dependencies:
+```bash
+pip install -r requirements.txt
+streamlit run app.py
